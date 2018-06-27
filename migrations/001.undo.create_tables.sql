@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS analises;
+
+DROP TABLE IF EXISTS produtos_analise;
+
+DROP TABLE IF EXISTS itens_venda;
+
+DROP TABLE IF EXISTS servicos;
+
+DROP TABLE IF EXISTS clientes;
+
+DROP TABLE IF EXISTS funcionarios;
+
+DROP TABLE IF EXISTS produtos;
+
+DROP TABLE IF EXISTS usuarios;
