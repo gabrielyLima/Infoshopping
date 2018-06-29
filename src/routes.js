@@ -1,9 +1,7 @@
+controllers = require('./controllers');
 
 module.exports = (app) => ({
     setup: () =>{
-
-        app.get('/aaa', (req, res) => {res.send('<h1>AAAAA</h1>x')})
-
-
+        app.get('/aaa/printar/:n', controllers.aaa.printar)
     }
 });

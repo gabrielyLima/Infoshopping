@@ -1,6 +1,6 @@
-http = require('http');
-express = require('express');
-Routes = require('./src/routes');
+const http = require('http');
+const express = require('express');
+const Routes = require('./src/routes');
 
 const port = 8082 
 const app = express();
@@ -10,5 +10,5 @@ const routes = Routes(app);
 routes.setup();
 
 app.listen(port, () => {
-    console.log("Servidor iniciado na porta " + port)
+    console.log("Servidor iniciado na porta " + port);
 })

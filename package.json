@@ -16,7 +16,8 @@
   "dependencies": {
     "express": "^4.16.3",
     "pg": "^7.4.3",
-    "postgrator": "^3.6.0"
+    "postgrator": "^3.6.0",
+    "require-all": "^2.2.0"
   },
   "devDependencies": {
     "postgrator-cli": "^0.2.2"
