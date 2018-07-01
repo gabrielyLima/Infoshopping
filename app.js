@@ -11,4 +11,4 @@ routes.setup();
 
 app.listen(port, () => {
     console.log("Servidor iniciado na porta " + port);
-})
+})      

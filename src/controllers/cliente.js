@@ -8,9 +8,10 @@ module.exports = {
     envia: (req, res) => {
         var envio = ""
         var something = true
-        if(req.params.n == 'servicos'){
-            query = "SELECT * FROM servicos";
-        }else{
+        if(req.params.n == 'produtos'){
+            query = "SELECT nome, descricao, categoria, preco FROM Produtos ORDER BY categoria ASC"
+        }
+        else{
             something = false
         }
         if(something){
