@@ -2,6 +2,7 @@ controllers = require('./controllers');
 
 module.exports = (app) => ({
     setup: () =>{
-        app.get('/aaa/printar/:n', controllers.aaa.printar)
+        app.get('/firstTry/print/:n', controllers.firstTry.print)
+        app.get('/client/:n', controllers.client.envia)
     }
 });
