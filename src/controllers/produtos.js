@@ -13,7 +13,15 @@ module.exports = {
         res.sendStatus(200)
     },
     listar: (req, res) => {
-
+        db.query(
+            'SELECT * FROM produtos'
+        )
+        .then(data => {
+            res.send(data.rows);
+        })
+        .catch(error => {
+            res.sendStatus(500);
+        })
     },
     remover: (req, res) => {
 
