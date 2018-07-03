@@ -1,0 +1,2 @@
+ALTER TABLE produtos
+    ALTER COLUMN quantidade DROP DEFAULT;

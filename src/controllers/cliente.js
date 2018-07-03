@@ -6,24 +6,20 @@ var query = ""
 
 module.exports = {
     envia: (req, res) => {
-        var envio = ""
         var something = true
-        if(req.params.n == 'produtos'){
+        if(req.params.consulta == 'produtos'){
             query = "SELECT nome, descricao, categoria, preco FROM Produtos ORDER BY categoria ASC"
         }
         else{
             something = false
         }
+
         if(something){
             bdServer.query(query)
-                .then(resaux => {
-                    const rows = resaux
-                    .rows;
-                    envio = envio + JSON.stringify(rows); 
-                    res.send(`<h1>${envio}<h1>`);
+                .then(result => {
+                    res.send(result.rows);
                 }).catch(err => {
-                    envio = err;
-                    res.send(`<h1>${envio}<h1>`);
+                    res.send("DEU ERRO");
                 });
         }
     }

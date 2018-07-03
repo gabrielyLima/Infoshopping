@@ -10,8 +10,8 @@ module.exports = (app) => ({
         app.delete('/api/produtos', controllers.produtos.remover);
         app.put('/api/produtos', controllers.produtos.alterar);
         
-        app.get('/cliente/:n', controllers.cliente.envia);
-        app.get('/gerente/:n', controllers.gerente.envia);
-        app.get('/tecnico/:n', controllers.tecnico.envia);
+        app.get('/cliente/:consulta', controllers.cliente.envia);
+        app.get('/gerente/:consulta', controllers.gerente.envia);
+        app.get('/tecnico/:consulta', controllers.tecnico.envia);
     }
 });

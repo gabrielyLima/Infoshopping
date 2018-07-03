@@ -1,12 +1,14 @@
-const { Pool } = require('pg')
+const { Pool } = require('pg');
+const config = require('../../config/config.json');
+
 
 const pool = new Pool({
-    user: 'aldo',
-    host: '127.0.0.1',
-    database: 'infoshoppingdb',
-    password: 'root',
-    port: 5432,
-  })
+    user : config.db.user,
+    host : config.db.host,
+    database : config.db.database,
+    password : config.db.password,
+    port : config.db.port
+  });
 
 module.exports = {
   query: (text, params, callback) => {

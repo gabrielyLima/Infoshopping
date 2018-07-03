@@ -6,41 +6,37 @@ var query = ""
 
 module.exports = {
     envia: (req, res) => {
-        var envio = ""
         var something = true
-        if(req.params.n == 'servicos'){
+        if(req.params.consultas == 'servicos'){
             query = "SELECT * FROM servicos";
         }
-        else if(req.params.n == 'analises'){
+        else if(req.params.consultas == 'analises'){
             query = "SELECT * FROM analises";
-        }else if(req.params.n == 'clientes'){
+        }else if(req.params.consultas == 'clientes'){
             query = "SELECT * FROM clientes";
-        }else if(req.params.n == 'itens_venda'){
+        }else if(req.params.consultas == 'itens_venda'){
             query = "SELECT * FROM itens_venda";
-        }else if(req.params.n == 'produtos'){
+        }else if(req.params.consultas == 'produtos'){
             query = "SELECT * FROM produtos";
-        }else if(req.params.n == 'produtos_analise'){
+        }else if(req.params.consultas == 'produtos_analise'){
             query = "SELECT * FROM produtos_analise";
-        }else if(req.params.n == 'analises_pendentes'){
+        }else if(req.params.consultas == 'analises_pendentes'){
             query = "SELECT Analises.descricao, S.id_Funcionario FROM Analises INNER JOIN Servicos S ON Analises.id_Analise=S.id_Servico WHERE Analises.status LIKE ’pendente’"
-        }else if(req.params.n == 'produtos_analise_ndesmontaveis'){
+        }else if(req.params.consultas == 'produtos_analise_ndesmontaveis'){
             query = "SELECT nome, descricao FROM Produtos WHERE descricao NOT LIKE ‘%desmontavel%’"
-        }else if(req.params.n == 'agendados'){
+        }else if(req.params.consultas == 'agendados'){
             query = "SELECT f.id_funcionario, s.datahora FROM funcionarios f, servicos s WHERE f.id_funcionario = s.id_funcionario AND s.datahora < NOW() + interval'15 days’ ORDER BY s.datahora"
         }
         else{
             something = false
         }
+        
         if(something){
             bdServer.query(query)
-                .then(resaux => {
-                    const rows = resaux
-                    .rows;
-                    envio = envio + JSON.stringify(rows); 
-                    res.send(`<h1>${envio}<h1>`);
+                .then(result => {
+                    res.send(result.rows);
                 }).catch(err => {
-                    envio = err;
-                    res.send(`<h1>${envio}<h1>`);
+                    res.send("DEU ERRO");
                 });
         }
     }

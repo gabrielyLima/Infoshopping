@@ -1,3 +1,3 @@
-DROP VIEW IF EXISTS totalFuncionario
+DROP VIEW IF EXISTS totalFuncionario;
 
-DROP VIEW IF EXISTS totalDia
+DROP VIEW IF EXISTS totalDia;
