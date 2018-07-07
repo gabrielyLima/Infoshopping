@@ -1,6 +1,6 @@
 {
     "db": {
-        "user" : "aldo",
+        "user" : "postgres",
         "host" : "127.0.0.1",
         "database" : "infoshoppingdb",
         "password" : "root",
