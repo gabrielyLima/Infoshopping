@@ -2,11 +2,11 @@ const db = require('../db');
 
 module.exports = {
     cadastrar: (req, res) => {
-        const { codigo_barras, preco, categoria, descricao, nome, quantidade } = req.body.produto;
+        const { email, senha, nome_completo } = req.body.usuario;
         db.query(`
-            INSERT INTO produtos (codigo_barras, preco, categoria, descricao, nome, quantidade)
-               VALUES ($1, $2, $3, $4, $5, $6)
-        `, [codigo_barras, preco, categoria, descricao, nome, quantidade])
+            INSERT INTO usuarios (email, senha, nome_completo)  
+               VALUES ($1, $2, $3)
+        `, [email, senha, nome_completo])
             .then(result => {
                 console.log('sucesso:');
                 console.log(result);
@@ -20,7 +20,7 @@ module.exports = {
     },
     listar: (req, res) => {
         db.query(`
-            SELECT * FROM produtos
+            SELECT * FROM usuarios
         `)
         .then(data => {
             res.send(data.rows);
@@ -30,12 +30,12 @@ module.exports = {
         })
     },
     remover: (req, res) => {
-        const codigo_barras = req.params.codigo_barras;
-        if(codigo_barras){
+        const id_usuario = req.params.id_usuario;
+        if(id_usuario){
             db.query(`
-                DELETE FROM produtos
-                   WHERE codigo_barras = $1
-            `, [codigo_barras])
+                DELETE FROM usuarios
+                   WHERE id_usuario = $1
+            `, [id_usuario])
                 .then(result => {
                     console.log(result);
                     res.sendStatus(200);
@@ -49,26 +49,16 @@ module.exports = {
         }
     },
     alterar: (req, res) => {
-        const { 
-            codigo_barras,
-            preco,
-            categoria,
-            descricao,
-            nome,
-            ultimo_reabastecimento,
-            quantidade
-        } = req.body.produto;
-        if(codigo_barras){
+        const id_usuario = req.params.id_usuario;
+        const { email, senha, nome_completo } = req.body.usuario;
+        if(id_usuario){
             db.query(`
                 UPDATE produtos 
-                    SET preco = $1,
-                    SET categoria = $2,
-                    SET descricao = $3,
-                    SET nome = $4,
-                    SET ultimo_reabastecimento = $5,
-                    SET quantidade = $6
-                    WHERE codigo_barras = $7
-            `, [preco, categoria, descricao, nome, ultimo_reabastecimento, quantidade, codigo_barras])
+                    SET email = $1,
+                    SET senha = $2,
+                    SET nome_completo = $3
+                    WHERE id_usuario = $5
+            `, [email, senha, nome_completo, id_usuario])
                 .then(result => {
                     console.log(result);
                     res.sendStatus(200);

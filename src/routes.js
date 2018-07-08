@@ -3,15 +3,31 @@ controllers = require('./controllers');
 module.exports = (app) => ({
     setup: () =>{
         app.get('/cms/CadastrarProduto', (req, res) => {res.render('productForm', {})});
-
         //CRUD Produtos
         app.get('/api/produtos', controllers.produtos.listar);
         app.post('/api/produtos', controllers.produtos.cadastrar);
-        app.delete('/api/produtos', controllers.produtos.remover);
+        app.delete('/api/produtos/:codigo_barras', controllers.produtos.remover);
         app.put('/api/produtos', controllers.produtos.alterar);
-        
-        app.get('/cliente/:consulta', controllers.cliente.envia);
-        app.get('/gerente/:consulta', controllers.gerente.envia);
-        app.get('/tecnico/:consulta', controllers.tecnico.envia);
+        //CRUD Servicos
+        app.get('/api/produtos', controllers.produtos.listar);
+        app.post('/api/servicos', controllers.servicos.realizar);
+        app.delete('/api/servicos/:id', controllers.servicos.remover);
+        //CRUD Funcionarios
+        app.get('/api/funcionarios', controllers.funcionarios.listar);
+        app.post('/api/funcionarios', controllers.funcionarios.cadastrar);
+        app.delete('/api/funcionarios/:id_funcionario', controllers.funcionarios.remover);
+        app.put('/api/funcionarios', controllers.funcionarios.alterar);
+        //CRUD Usuarios
+        app.get('/api/usuarios', controllers.usuarios.listar);
+        app.post('/api/usuarios', controllers.usuarios.cadastrar);
+        app.delete('/api/usuarios/:id_usuario', controllers.usuarios.remover);
+        app.put('/api/usuarios/:id_usuario', controllers.usuarios.alterar);
+        //Consultas
+        //Não acredito que seria muito util para implementação, mas temos que levar em conta
+        //por que o trabalho de BD exigi as 12 consultas eu acho, não sei na verdade, se não
+        //exigir podemos excluir
+        app.get('/cliente/:consulta', controllers.consultas.cliente.envia);
+        app.get('/gerente/:consulta', controllers.consultas.gerente.envia);
+        app.get('/tecnico/:consulta', controllers.consultas.tecnico.envia);
     }
 });
