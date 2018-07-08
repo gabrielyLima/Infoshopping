@@ -24,7 +24,7 @@ module.exports = {
         }else if(req.params.consulta == 'produtos_analise'){
             query = "SELECT * FROM produtos_analise";
         }else if(req.params.consulta == 'quantidade_produtos_vendidos_categoria'){
-            query = "SELECT categoria , SUM(IV.quantidade) FROM produtos P INNER JOIN itens_Venda IV ON P.codigo_barras = IV.codigo_barras GROUP BY categoria ORDER BY categoria ASC"
+            query = "SELECT categoria , SUM(CASE WHEN IV.quantidade IS NOT NULL THEN IV.quantidade ELSE 0 END) FROM produtos P LEFT OUTER JOIN itens_Venda IV ON P.codigo_barras = IV.codigo_barras GROUP BY categoria ORDER BY categoria ASC"
         }else if(req.params.consulta == 'analises_pendentes'){
             query = "SELECT Analises.descricao, S.id_Funcionario FROM Analises INNER JOIN Servicos S ON Analises.id_Analise=S.id_Servico WHERE Analises.status LIKE 'pendente'"
         }else if(req.params.consulta == 'comissao'){
