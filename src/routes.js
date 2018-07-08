@@ -9,9 +9,9 @@ module.exports = (app) => ({
         app.delete('/api/produtos/:codigo_barras', controllers.produtos.remover);
         app.put('/api/produtos', controllers.produtos.alterar);
         //CRUD Servicos
-        app.get('/api/servicos', controllers.produtos.listar);
+        app.get('/api/servicos', controllers.servicos.listar);
         app.post('/api/servicos', controllers.servicos.realizar);
-        app.delete('/api/servicos/:id', controllers.servicos.remover);
+        app.delete('/api/servicos/:id_servico', controllers.servicos.remover);
         //CRUD Funcionarios
         app.get('/api/funcionarios', controllers.funcionarios.listar);
         app.post('/api/funcionarios', controllers.funcionarios.cadastrar);
@@ -20,7 +20,7 @@ module.exports = (app) => ({
         //CRUD Usuarios
         app.get('/api/usuarios', controllers.usuarios.listar);
         app.post('/api/usuarios', controllers.usuarios.cadastrar);
-        app.delete('/api/usuarios/:id_usuario', controllers.usuarios.remover);
+        app.delete('/api/usuarios/:email', controllers.usuarios.remover);
         app.put('/api/usuarios/:id_usuario', controllers.usuarios.alterar);
         //Consultas
         //Não acredito que seria muito util para implementação, mas temos que levar em conta

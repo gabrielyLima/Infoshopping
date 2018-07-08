@@ -4,9 +4,9 @@ module.exports = {
     cadastrar: (req, res) => {
         const { id_funcionario, RG, CPF, conta_banco, agencia_bancaria, meta, tipo_funcionario } = req.body.funcionario;
         db.query(`
-            INSERT INTO produtos (id_funcionario, RG, CPF, conta_banco, agencia_bancaria, meta, tipo_funcionario)
+            INSERT INTO funcionarios (id_funcionario, RG, CPF, conta_banco, agencia_bancaria, meta, tipo_funcionario)
                VALUES ($1, $2, $3, $4, $5, $6, $7)
-        `, [id_funcionario, codigo_barras, preco, categoria, descricao, nome, quantidade])
+        `, [ id_funcionario, RG, CPF, conta_banco, agencia_bancaria, meta, tipo_funcionario])
             .then(result => {
                 console.log('sucesso:');
                 console.log(result);
@@ -52,7 +52,7 @@ module.exports = {
         const { id_funcionario, RG, CPF, conta_banco, agencia_bancaria, meta, tipo_funcionario } = req.body.funcionario;
         if(id_funcionario){
             db.query(`
-                UPDATE produtos 
+                UPDATE funcionarios 
                     SET conta_banco = $1,
                     SET agencia_bancaria = $2,
                     SET meta = $3,

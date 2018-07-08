@@ -30,12 +30,12 @@ module.exports = {
         })
     },
     remover: (req, res) => {
-        const id_usuario = req.params.id_usuario;
-        if(id_usuario){
+        const email = req.params.email;
+        if(email){
             db.query(`
                 DELETE FROM usuarios
-                   WHERE id_usuario = $1
-            `, [id_usuario])
+                   WHERE email = $1
+            `, [email])
                 .then(result => {
                     console.log(result);
                     res.sendStatus(200);
@@ -53,7 +53,7 @@ module.exports = {
         const { email, senha, nome_completo } = req.body.usuario;
         if(id_usuario){
             db.query(`
-                UPDATE produtos 
+                UPDATE usuarios 
                     SET email = $1,
                     SET senha = $2,
                     SET nome_completo = $3

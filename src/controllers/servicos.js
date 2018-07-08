@@ -2,11 +2,12 @@ const db = require('../db');
 
 module.exports = {
     realizar: (req, res) => {
-        const { dataHora, valor, id_funcionario, id_cliente } = req.body.servico;
+        const datahora = new  Date().toLocaleString();
+        const { valor, id_funcionario, id_cliente } = req.body.servico;
         db.query(`
-            INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente)
+            INSERT INTO servicos (datahora, valor, id_funcionario, id_cliente)
                VALUES ($1, $2, $3, $4)
-        `, [dataHora, valor, id_funcionario, id_cliente])
+        `, [datahora, valor, id_funcionario, id_cliente])
             .then(result => {
                 console.log('sucesso:');
                 console.log(result);
@@ -45,6 +46,7 @@ module.exports = {
                     res.sendStatus(500);
                 });
         } else {
+            console.log(id_servico);
             res.sendStatus(500);
         }
     },
