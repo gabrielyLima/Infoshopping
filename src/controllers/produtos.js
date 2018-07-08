@@ -20,7 +20,9 @@ module.exports = {
     },
     listar: (req, res) => {
         db.query(`
-            SELECT * FROM produtos
+            SELECT nome, descricao, categoria, preco
+            FROM Produtos
+            ORDER BY categoria ASC;
         `)
         .then(data => {
             res.send(data.rows);
