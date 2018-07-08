@@ -9,7 +9,7 @@ module.exports = (app) => ({
         app.delete('/api/produtos/:codigo_barras', controllers.produtos.remover);
         app.put('/api/produtos', controllers.produtos.alterar);
         //CRUD Servicos
-        app.get('/api/produtos', controllers.produtos.listar);
+        app.get('/api/servicos', controllers.produtos.listar);
         app.post('/api/servicos', controllers.servicos.realizar);
         app.delete('/api/servicos/:id', controllers.servicos.remover);
         //CRUD Funcionarios
