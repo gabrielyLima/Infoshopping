@@ -2,16 +2,18 @@ const db = require('../db');
 
 module.exports = {
     cadastrar: (req, res) => {
-        const { codigo_barras, preco, categoria, descricao, nome } = req.body.produto;
+        const { codigo_barras, preco, categoria, descricao, nome, quantidade } = req.body.produto;
         db.query(`
-            INSERT INTO produtos (codigo_barras, preco, categoria, descricao, nome)
-               VALUES ($1, $2, $3, $4, $5)
-        `, [codigo_barras, preco, categoria, descricao, nome])
+            INSERT INTO produtos (codigo_barras, preco, categoria, descricao, nome, quantidade)
+               VALUES ($1, $2, $3, $4, $5, $6)
+        `, [codigo_barras, preco, categoria, descricao, nome, quantidade])
             .then(result => {
+                console.log('sucesso:');
                 console.log(result);
                 res.sendStatus(200);
             })
             .catch(error => {
+                console.log('erro:');
                 console.log(error);
                 res.sendStatus(500);
             });
@@ -28,11 +30,11 @@ module.exports = {
         })
     },
     remover: (req, res) => {
-        const codigo_barras = req.body.produto.codigo_barras;
+        const codigo_barras = req.params.codigo_barras;
         if(codigo_barras){
             db.query(`
                 DELETE FROM produtos
-                   WHERE codigo_barras = $0
+                   WHERE codigo_barras = $1
             `, [codigo_barras])
                 .then(result => {
                     console.log(result);

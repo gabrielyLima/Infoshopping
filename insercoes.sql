@@ -18,10 +18,10 @@ INSERT INTO funcionarios VALUES (006, '9897655', '22022345562', '65432', '24562'
 INSERT INTO funcionarios VALUES (007, '8384570', '11515567483', '44573', '67843', 7000, 'Vendedor');
 INSERT INTO funcionarios VALUES (008, '9897651', '11313354584', '34894', '97864', 7000, 'Vendedor');
 
-INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente) VALUES ('12-04-2018 10:00:03', 100, 005, 001);
-INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente) VALUES ('13-04-2018 09:00:05', 150, 005, 002);
-INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente) VALUES ('14-04-2018 11:20:04', 80, 008, 003);
-INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente) VALUES ('14-04-2018 16:07:09', 90, 007, 004);
+INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente) VALUES ('04-12-2018 10:00:03', 100, 005, 001);
+INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente) VALUES ('04-13-2018 09:00:05', 150, 005, 002);
+INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente) VALUES ('04-14-2018 11:20:04', 80, 008, 003);
+INSERT INTO servicos (dataHora, valor, id_funcionario, id_cliente) VALUES ('04-14-2018 16:07:09', 90, 007, 004);
 
 INSERT INTO produtos VALUES ('123254764736212132', '10-02-2018 07:00:01', 15.00, 200, 'perifericos', '...','Mouse');
 INSERT INTO produtos VALUES ('002435668987654434', '11-02-2018 18:30:09', 250.00, 150, 'peças', '...', 'Placa-mãe');
