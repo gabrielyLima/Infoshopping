@@ -20,7 +20,7 @@ module.exports = {
     },
     listar: (req, res) => {
         db.query(`
-            SELECT codigo_barras, nome, descricao, categoria, preco
+            SELECT codigo_barras, nome, descricao, categoria, preco, quantidade
             FROM Produtos
             ORDER BY categoria ASC;
         `)
